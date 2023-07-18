@@ -63,8 +63,6 @@ model VerificationToken {
 
 model Book {
     id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
     title     String
     author    String
     resumo    String
