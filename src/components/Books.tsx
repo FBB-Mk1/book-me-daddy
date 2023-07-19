@@ -37,13 +37,20 @@ function BookCard (book: {
     id: string,
     userId: string,
   }) {
-  
+    
+    const deleteBook = api.book.delete.useMutation({});
+    const remover = () => {
+        deleteBook.mutate({
+            id: book.id
+        })
+        
+    }
     return(
       <div className="bg-red-600 w-40 h-60 text-white flex-col flex m-2">
         <span className="text-xl self-center h-[20%]">{book.title}</span>
         <span className="text-sm self-end px-2">{book.author}</span>
         <span className="h-[55%]">{book.resumo}</span>
-        <button className="self-end mx-2 px-2 border">Delete</button>
+        <button className="self-end mx-2 px-2 border" onClick={remover}>Delete</button>
       </div>
     )
 }
