@@ -1,6 +1,9 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import { api } from "~/utils/api";
+import { type RouterOutputs } from "~/utils/api";
+
+type Book = RouterOutputs["book"]["getAll"][0];
 
 export default function Home() {
   return (
@@ -9,6 +12,7 @@ export default function Home() {
         <title>Book-me</title>
         <meta name="description" content="Book me daddy" />
         <link rel="icon" href="/favicon.ico" />
+        
       </Head>
       <main className="flex h-screen w-screen flex-col">
         <Header />
@@ -54,17 +58,12 @@ const Books: React.FC = () => {
           Criar
         </button>
       </div>
-      <div id="output" className="h-full w-full">
-        Books:{" "}
+      <div id="output" className="">
+        Books:
         <div>
-          <div className="flex bg-red-200 w-full h-full">
+          <div className="flex flex-wrap bg-red-200">
             {books?.map((book) => (
-              <div className="flex flex-col m-2 bg-red-500" key={book.id}>
-                <span className="text-xl h-[20%] self-center ">{book.title}</span>
-                <span className="text-sm self-end px-2">{book.author}</span>
-                <span className="h-[60%]">{book.resumo}</span>
-                <button className="self-end">Delete</button>
-              </div>
+              <BookCard key={book.id} {...book} />
             ))}
           </div>
         </div>
@@ -72,6 +71,25 @@ const Books: React.FC = () => {
     </div>
   );
 };
+
+
+function BookCard (book: {
+  title: string,
+  author: string,
+  resumo: string,
+  id: string,
+  userId: string,
+}) {
+
+  return(
+    <div className="bg-red-600 w-40 h-60 text-white flex-col flex m-2">
+      <span className="text-xl self-center h-[20%]">{book.title}</span>
+      <span className="text-sm self-end px-2">{book.author}</span>
+      <span className="h-[55%]">{book.resumo}</span>
+      <button className="self-end mx-2 px-2 border">Delete</button>
+    </div>
+  )
+}
 
 const Header = () => {
   const { data: sessionData } = useSession();
