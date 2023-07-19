@@ -14,8 +14,8 @@ export const bookRouter = createTRPCRouter({
 
     create: protectedProcedure
         .input(z.object({ title: z.string().min(1), author: z.string().min(1), resumo: z.string().min(1) }))
-        .mutation(({ ctx, input }) => {
-            return ctx.prisma.book.create({
+        .mutation(async ({ ctx, input }) => {
+            const item = await ctx.prisma.book.create({
                 data: {
                     title: input.title,
                     author: input.author,
@@ -23,6 +23,9 @@ export const bookRouter = createTRPCRouter({
                     userId: ctx.session.user.id
               }
           })
+          console.log(item)
+          return (item)
+          
     }),
 
     delete: protectedProcedure

@@ -1,4 +1,4 @@
-import { bookRouter } from "~/server/api/routers/book";
+import { bookRouter } from "~/server/api/routers/bookRouter";
 import { createTRPCRouter } from "~/server/api/trpc";
 
 /**
