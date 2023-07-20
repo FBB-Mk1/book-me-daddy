@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import BookModal from "~/components/BookModal";
 import { api } from "~/utils/api";
+import BookCard from "./BookCard";
 
 export default function Books() {
   const [bookList, setBookList] = useState<Book[]>([]);
@@ -25,7 +26,6 @@ export default function Books() {
 
   return (
     <>
-      
       <div>
         {modalToggle && (
           <BookModal
@@ -43,25 +43,17 @@ export default function Books() {
             Inserir Livro
           </button>
         </div>
-        {deleteBook.isLoading && <div className="absolute inset-0 flex items-center justify-center bg-black/50"></div>}
+        {deleteBook.isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/50"></div>
+        )}
         <div className="flex flex-wrap">
-          {isLoading && <div className="absolute inset-0 flex items-center justify-center bg-white/75 text-5xl">Loading...</div>}
-          {bookList.map((book) => (
-            <div
-              key={book.id}
-              className="mx-2 my-2 flex h-60 w-40 w-40 flex-col bg-red-600 text-white"
-            >
-              <span className="h-[20%] self-center text-xl">{book.title}</span>
-              <span className="self-end px-2 text-sm">{book.author}</span>
-              <span className="h-[55%]">{book.resumo}</span>
-              <button
-                key={book.id}
-                className="mx-2 self-end border px-2"
-                onClick={() => deleteBook.mutate({ id: book.id })}
-              >
-                Delete
-              </button>
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-white/75 text-5xl">
+              Loading...
             </div>
+          )}
+          {bookList.map((book) => (
+            <BookCard key={book.id} book={book} setBookList={setBookList} />
           ))}
         </div>
       </div>
