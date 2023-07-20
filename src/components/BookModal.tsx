@@ -11,6 +11,9 @@ const BookModal: FC<BookModalProps> = ({ setModalToggle, setBookList }) => {
   const createBook = api.book.create.useMutation({
     onSuccess(book) {
         setBookList((prev) => [...prev, book]);
+        setTitle("");
+        setAuthor("");
+        setResumo("");
         }
   });
   const [disabled, setDisabled] = useState(false);
@@ -27,11 +30,10 @@ const BookModal: FC<BookModalProps> = ({ setModalToggle, setBookList }) => {
     while(createBook.isLoading){
         setDisabled(true);
     }
+    
     setDisabled(false);
-    setModalToggle(false);
-    setTitle("");
-    setAuthor("");
-    setResumo("");
+    
+    
   };
 
   
@@ -53,6 +55,7 @@ const BookModal: FC<BookModalProps> = ({ setModalToggle, setBookList }) => {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                disabled={disabled}
               />
             </label>
             <label>
@@ -62,6 +65,7 @@ const BookModal: FC<BookModalProps> = ({ setModalToggle, setBookList }) => {
                 type="text"
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
+                disabled={disabled}
               />
             </label>
             <label>
@@ -71,6 +75,7 @@ const BookModal: FC<BookModalProps> = ({ setModalToggle, setBookList }) => {
                 type="text"
                 value={resumo}
                 onChange={(e) => setResumo(e.target.value)}
+                disabled={disabled}
               />
             </label>
             <button

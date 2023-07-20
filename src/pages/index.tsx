@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Books from "~/components/Books";
 import Header from "~/components/Header";
 import SideBar from "~/components/SideBar";
+import Books from "~/components/Books";
 
 
 export default function Home() {
