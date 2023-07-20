@@ -10,7 +10,7 @@ export default function Books() {
 
   const { data: sessionData } = useSession();
 
-  const {} = api.book.getAll.useQuery(undefined, {
+  const { isLoading } = api.book.getAll.useQuery(undefined, {
     enabled: sessionData?.user !== undefined,
     onSuccess: (data) => {
       setBookList(data);
@@ -37,7 +37,7 @@ export default function Books() {
       <div className="m-auto h-full w-full flex-col">
         <div className="my-3 grid">
           <button
-            className="mx-auto place-self-center rounded-sm bg-slate-200 px-2"
+            className="mx-auto place-self-center rounded-sm bg-slate-200 px-2 py-1 hover:bg-slate-300"
             onClick={() => setModalToggle(true)}
           >
             Inserir Livro
@@ -45,6 +45,7 @@ export default function Books() {
         </div>
         {deleteBook.isLoading && <div className="absolute inset-0 flex items-center justify-center bg-black/50"></div>}
         <div className="flex flex-wrap">
+          {isLoading && <div className="absolute inset-0 flex items-center justify-center bg-white/75 text-5xl">Loading...</div>}
           {bookList.map((book) => (
             <div
               key={book.id}

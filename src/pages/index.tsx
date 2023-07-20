@@ -28,7 +28,7 @@ export default function Home() {
         ) : (
           <div className="flex h-full w-full content-center justify-center">
             <button
-              className="h-40 w-40 self-center rounded-full bg-slate-200 text-3xl text-red-900 text-white"
+              className="h-40 w-40 self-center rounded-full bg-slate-200 text-3xl font-mono font-bold text-amber-600 hover:bg-slate-300"
               onClick={() => void signIn()}
             >
               SignIn

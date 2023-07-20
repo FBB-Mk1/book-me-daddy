@@ -1,31 +1,30 @@
-import { signIn, signOut, useSession } from "next-auth/react";
+/* eslint-disable @next/next/no-img-element */
+import { signOut, useSession } from "next-auth/react";
 
 const Header = () => {
-    const { data: sessionData } = useSession();
-  
-    return (
-      <div className="w-full bg-slate-200">
-        <div className="mx-4 my-2 flex justify-between">
-          <div>Book-me</div>
-          <div className="">
-            <h1>
-              {sessionData?.user?.name
-                ? `Livros de ${sessionData.user.name}`
-                : ""}
-            </h1>
-          </div>
-          <div className="">
-            {sessionData?.user ? (
-              <div>
-                <button onClick={() => void signOut()}>SignOut</button>
-              </div>
-            ) : (
-              <button onClick={() => void signIn()}>SignIn</button>
-            )}
-          </div>
+  const { data: sessionData } = useSession();
+
+  return (
+    <div className="w-full bg-slate-200">
+      <div className="mx-4 my-2 flex items-center justify-between">
+        <div className="text-2xl font-mono font-bold text-amber-600">Book.me.daddy</div>
+        <div className="">
+          <h1 className="text-3xl">
+            {sessionData?.user?.name
+              ? `Livros de ${sessionData.user.name}`
+              : ""}
+          </h1>
+        </div>
+        <div className="flex flex-row px-1">
+          <button className="bg-slate-100 px-2 rounded-md hover:bg-slate-300"  onClick={() => void signOut()}>SignOut</button>
+          {sessionData ? (<img
+          className="mx-1 rounded-full h-8 w-8"
+          src={sessionData.user?.image} alt={sessionData.user.name} />) : ( <div></div> )} 
+          
         </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
-export default Header
+export default Header;
