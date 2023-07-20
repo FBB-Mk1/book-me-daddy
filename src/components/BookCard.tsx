@@ -18,19 +18,18 @@ const BookCard: FC<BookCardProps> = ({ book, setBookList }) => {
     <>
       <div>
         {deleteBook.isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/50"></div>
+          <div className="border-box absolute inset-0 flex items-center justify-center bg-black/50 "></div>
         )}
       </div>
       <div
-        key={book.id}
-        className="mx-2 my-2 flex h-60 w-40 w-40 flex-col bg-red-600 text-white"
+        className="mx-2 my-2 flex h-72 w-52 flex-col bg-slate-700 text-white "
       >
-        <span className="h-[20%] self-center text-xl">{book.title}</span>
-        <span className="self-end px-2 text-sm">{book.author}</span>
-        <span className="h-[55%]">{book.resumo}</span>
+        <span className="h-[20%] text-center text-xl">{book.title}</span>
+        <span className="self-end px-2 text-sm">por: {book.author}</span>
+        <span className="mx-2 h-[55%]">{book.resumo}</span>
         <button
           key={book.id}
-          className="mx-2 self-end border px-2"
+          className="mx-2 self-end rounded-sm border px-2 hover:bg-slate-500"
           onClick={() => deleteBook.mutate({ id: book.id })}
         >
           Delete
