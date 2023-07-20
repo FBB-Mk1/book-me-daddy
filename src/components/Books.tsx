@@ -19,13 +19,13 @@ export default function Books() {
 
   const deleteBook = api.book.delete.useMutation({
     onSuccess: (data) => {
-      setBookList((prev) => prev.filter((item) => item.id !== data.id))
-    }
+      setBookList((prev) => prev.filter((item) => item.id !== data.id));
+    },
   });
-
 
   return (
     <>
+      
       <div>
         {modalToggle && (
           <BookModal
@@ -34,18 +34,21 @@ export default function Books() {
           />
         )}
       </div>
-      <div className="mx-auto my-12 max-w-3xl">
-        <button
-          className="rounded-sm border px-2"
-          onClick={() => setModalToggle(true)}
-        >
-          Inserir Livro
-        </button>
-        <div className="flex">
+      <div className="m-auto h-full w-full flex-col">
+        <div className="my-3 grid">
+          <button
+            className="mx-auto place-self-center rounded-sm bg-slate-200 px-2"
+            onClick={() => setModalToggle(true)}
+          >
+            Inserir Livro
+          </button>
+        </div>
+        {deleteBook.isLoading && <div className="absolute inset-0 flex items-center justify-center bg-black/50"></div>}
+        <div className="flex flex-wrap">
           {bookList.map((book) => (
             <div
               key={book.id}
-              className="m-2 flex h-60 w-40 flex-col bg-red-600 text-white"
+              className="mx-2 my-2 flex h-60 w-40 w-40 flex-col bg-red-600 text-white"
             >
               <span className="h-[20%] self-center text-xl">{book.title}</span>
               <span className="self-end px-2 text-sm">{book.author}</span>
@@ -53,7 +56,7 @@ export default function Books() {
               <button
                 key={book.id}
                 className="mx-2 self-end border px-2"
-                onClick={() => deleteBook.mutate({id: book.id})}
+                onClick={() => deleteBook.mutate({ id: book.id })}
               >
                 Delete
               </button>
