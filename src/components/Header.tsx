@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { signOut, useSession } from "next-auth/react";
 
 const Header = () => {
@@ -19,7 +18,7 @@ const Header = () => {
           <button className="bg-slate-100 px-2 rounded-md hover:bg-slate-300"  onClick={() => void signOut()}>SignOut</button>
           {sessionData ? (<img
           className="mx-1 rounded-full h-8 w-8"
-          src={sessionData.user?.image} alt={sessionData.user.name} />) : ( <div></div> )} 
+          src={sessionData.user.image ? sessionData.user.image : "noimage"} alt={sessionData.user.name ? sessionData.user.name : "NoName"} />) : ( <div></div> )} 
           
         </div>
       </div>
