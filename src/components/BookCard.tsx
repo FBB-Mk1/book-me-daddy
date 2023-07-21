@@ -16,14 +16,7 @@ const BookCard: FC<BookCardProps> = ({ book, setBookList }) => {
 
   return (
     <>
-      <div>
-        {deleteBook.isLoading && (
-          <div className="border-box absolute inset-0 flex items-center justify-center bg-black/50 "></div>
-        )}
-      </div>
-      <div
-        className="mx-2 my-2 flex h-72 w-52 flex-col bg-slate-700 text-white "
-      >
+      <div className="mx-2 my-2 flex h-72 w-52 flex-col bg-slate-700 text-white ">
         <span className="h-[20%] text-center text-xl">{book.title}</span>
         <span className="self-end px-2 text-sm">por: {book.author}</span>
         <span className="mx-2 h-[55%]">{book.resumo}</span>
@@ -34,6 +27,11 @@ const BookCard: FC<BookCardProps> = ({ book, setBookList }) => {
         >
           Delete
         </button>
+      </div>
+      <div>
+        {deleteBook.isLoading && (
+          <div className="border-box absolute inset-0 flex items-center justify-center bg-black/50 "></div>
+        )}
       </div>
     </>
   );

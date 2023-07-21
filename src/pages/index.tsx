@@ -14,16 +14,11 @@ export default function Home() {
         <meta name="description" content="Book me daddy" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex h-screen w-screen flex-col content-center">
+      <main className="bg-red-50 h-screen">
         {sessionData?.user ? (
-          <div className="flex h-full w-full flex-col bg-slate-100">
-            <div>
-              <Header />
-            </div>
-            <div className="flex h-full w-full bg-slate-100">
-              
-              <Books />
-            </div>
+          <div>
+            <Header />
+            <Books />
           </div>
         ) : (
           <div className="flex h-full w-full content-center justify-center">

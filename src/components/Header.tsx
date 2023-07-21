@@ -1,24 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import { signOut, useSession } from "next-auth/react";
+import Logo from "./Logo";
 
 const Header = () => {
   const { data: sessionData } = useSession();
 
   return (
-    <div className="w-full bg-slate-200">
-      <div className="mx-4 my-2 flex items-center justify-between">
-        <div className="text-2xl font-mono font-bold text-amber-600">Book.me.daddy</div>
-        <div className="">
-          <h1 className="text-3xl">
-            {sessionData?.user?.name
-              ? `Livros de ${sessionData.user.name}`
-              : ""}
-          </h1>
-        </div>
-        <div className="flex flex-row px-1">
-          <button className="bg-slate-100 px-2 rounded-md hover:bg-slate-300"  onClick={() => void signOut()}>SignOut</button>
+    <div>
+      <div className="bg-red-900 flex justify-between h-14 px-20">
+        <Logo />
+        
+        <div className="flex flex-row px-1 h-full">
+          <button className="bg-red-50 h-[50%] self-center px-2 rounded-md hover:bg-slate-300 border-none"  onClick={() => void signOut()}>SignOut</button>
           {sessionData ? (<img
-          className="mx-1 rounded-full h-8 w-8"
+          className="mx-1 rounded-full h-8 w-8 self-center"
           src={sessionData.user.image ? sessionData.user.image : "noimage"} alt={sessionData.user.name ? sessionData.user.name : "NoName"} />) : ( <div></div> )} 
           
         </div>

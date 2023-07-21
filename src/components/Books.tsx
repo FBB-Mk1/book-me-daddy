@@ -26,18 +26,11 @@ export default function Books() {
 
   return (
     <>
-      <div>
-        {modalToggle && (
-          <BookModal
-            setModalToggle={setModalToggle}
-            setBookList={setBookList}
-          />
-        )}
-      </div>
-      <div className="m-auto h-full w-full flex-col">
-        <div className="my-3 grid">
+      
+      <div className="h-full w-full flex-col">
+        <div className="grid">
           <button
-            className="mx-auto place-self-center rounded-sm bg-slate-200 px-2 py-1 hover:bg-slate-300"
+            className="mx-auto place-self-center rounded-sm bg-slate-200 px-2 hover:bg-slate-300 my-2"
             onClick={() => setModalToggle(true)}
           >
             Inserir Livro
@@ -46,16 +39,24 @@ export default function Books() {
         {deleteBook.isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/50"></div>
         )}
-        <div className="flex flex-wrap">
-          {isLoading && (
+        {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-white/75 text-5xl">
               Loading...
             </div>
           )}
+        <div className="flex flex-wrap mx-20 justify-center">
           {bookList.map((book) => (
             <BookCard key={book.id} book={book} setBookList={setBookList} />
           ))}
         </div>
+      </div>
+      <div>
+        {modalToggle && (
+          <BookModal
+            setModalToggle={setModalToggle}
+            setBookList={setBookList}
+          />
+        )}
       </div>
     </>
   );
