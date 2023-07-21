@@ -8,7 +8,9 @@ import {
 export const bookRouter = createTRPCRouter({
     getAll: protectedProcedure.query(({ ctx }) => {
         return ctx.prisma.book.findMany({
-     
+            where: {
+                userId: ctx.session.user.id
+            }
         });
     }),
 
