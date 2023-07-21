@@ -11,7 +11,7 @@ const Header = () => {
         <Logo />
         
         <div className="flex flex-row px-1 h-full">
-          <button className="bg-red-50 h-[50%] self-center px-2 rounded-md hover:bg-slate-300 border-none"  onClick={() => void signOut()}>SignOut</button>
+          <button className="bg-white text-red-900 h-[50%] self-center px-2 rounded-md hover:bg-red-900 hover:border hover:border-white hover:text-white"  onClick={() => void signOut()}>SignOut</button>
           {sessionData ? (<img
           className="mx-1 rounded-full h-8 w-8 self-center"
           src={sessionData.user.image ? sessionData.user.image : "noimage"} alt={sessionData.user.name ? sessionData.user.name : "NoName"} />) : ( <div></div> )} 

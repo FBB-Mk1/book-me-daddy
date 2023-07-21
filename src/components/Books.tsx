@@ -30,10 +30,10 @@ export default function Books() {
       <div className="h-full w-full flex-col">
         <div className="grid">
           <button
-            className="mx-auto place-self-center rounded-sm bg-slate-200 px-2 hover:bg-slate-300 my-2"
+            className="mx-auto rounded-sm bg-red-900 text-center border text-white px-2 hover:bg-white hover:border hover:border-red-900 hover:text-red-900 my-2"
             onClick={() => setModalToggle(true)}
           >
-            Inserir Livro
+            Adicionar Livro
           </button>
         </div>
         {deleteBook.isLoading && (
