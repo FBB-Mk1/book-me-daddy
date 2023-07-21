@@ -43,7 +43,7 @@ const BookCard: FC<BookCardProps> = ({ book, setBookList }) => {
       </div>
       <div>
         {deleteBook.isLoading && (
-          <div className="border-box absolute inset-0 flex items-center justify-center bg-black/50 "></div>
+          <div className="modal-base"></div>
         )}
       </div>
     </>

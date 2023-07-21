@@ -36,7 +36,7 @@ const BookModal: FC<BookModalProps> = ({ setModalToggle, setBookList }) => {
   };
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center bg-black/75">
+    <div className="modal-base">
       <div className="rounded-md bg-white p-3">
         <div className="flex flex-col w-56">
           <div className="flex flex-col gap-2">
