@@ -28,13 +28,16 @@ export default function Books() {
     <>
       
       <div className="h-full w-full flex-col">
-        <div className="grid">
+        <div className="flex h-20 border-red-900 border-b justify-between items-center px-20">
           <button
-            className="mx-auto rounded-sm bg-red-900 text-center border text-white px-2 hover:bg-white hover:border hover:border-red-900 hover:text-red-900 my-2"
+            className="red-button"
             onClick={() => setModalToggle(true)}
           >
             Adicionar Livro
           </button>
+          <div>
+            Filtrar Dropdown
+          </div>
         </div>
         {deleteBook.isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/50"></div>

@@ -41,15 +41,18 @@ const BookModal: FC<BookModalProps> = ({ setModalToggle, setBookList }) => {
         <div className="flex flex-col w-56">
           <div className="flex flex-col gap-2">
             <button
-              className="self-end rounded-full bg-red-900 px-2 text-center font-bold text-white"
+              className="self-end rounded-full px-2 text-center font-bold red-button"
               onClick={() => setModalToggle(false)}
             >
               X
             </button>
+            <div className="border-y border-red-900 items-center justify-center flex py-9">
             <Logo />
-            <label className="text-red-900 font-bold text-xs">Título:</label>
+
+            </div>
+            <label className="text-red-900 font-bold text-xs ">Título:</label>
             <input
-              className="border-red-900 border rounded-sm"
+              className="border-red-900 border rounded-sm px-1"
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -57,15 +60,15 @@ const BookModal: FC<BookModalProps> = ({ setModalToggle, setBookList }) => {
             />
             <label  className="text-red-900 font-bold text-xs">Autor:</label>
             <input
-              className="border-red-900 border rounded-sm"
+              className="border-red-900 border rounded-sm px-1"
               type="text"
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
               disabled={disabled}
             />
-            <label  className="text-red-900 font-bold text-xs">Resumo:</label>
+            <label  className="text-red-900 font-bold text-xs ">Resumo:</label>
             <textarea
-              className="border-red-900 border rounded-sm"
+              className="border-red-900 border rounded-sm px-1"
               rows={5}
               value={resumo}
               onChange={(e) => setResumo(e.target.value)}
@@ -73,7 +76,7 @@ const BookModal: FC<BookModalProps> = ({ setModalToggle, setBookList }) => {
             />
             <button
               id="title"
-              className="border-red-900 bg-red-900 border rounded-sm text-white"
+              className="red-button"
               onClick={create}
               disabled={disabled}
             >

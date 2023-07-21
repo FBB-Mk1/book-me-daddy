@@ -5,3 +5,12 @@
 * {
     box-sizing: border-box;
 }
+
+@layer components {
+    .red-button {
+        @apply px-2 border-red-900 bg-red-900 border hover:border rounded-sm  text-white hover:text-red-900 hover:border-red-900 hover:bg-white;
+    }
+    .white-button {
+        @apply px-2 hover:border-white hover:bg-red-900 border rounded-sm  hover:text-white text-red-900 border-red-900 bg-white;
+    }
+}
