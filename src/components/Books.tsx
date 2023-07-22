@@ -40,18 +40,17 @@ export default function Books() {
           </div>
         </div>
         {deleteBook.isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/50"></div>
+          <div className="modal-base"></div>
         )}
-        {isLoading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-white/75 text-5xl">
-              Loading...
-            </div>
-          )}
-        <div className="flex flex-wrap mx-20 justify-center">
+        {isLoading && <div className="modal-base"> Loading...</div>}
+      
+        <div className="flex flex-wrap gap-1 px-20 pt-4">
           {bookList.map((book) => (
             <BookCard key={book.id} book={book} setBookList={setBookList} />
           ))}
         </div>
+      
+        
       </div>
       <div>
         {modalToggle && (

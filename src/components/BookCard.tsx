@@ -16,35 +16,29 @@ const BookCard: FC<BookCardProps> = ({ book, setBookList }) => {
 
   return (
     <>
-      <div className="mx-2 my-2 flex h-80 w-52 flex-col overflow-hidden rounded-md bg-red-900 text-white">
-        <div className="flex h-[50%] flex-col justify-between">
-          <span className="my-5 text-center text-xl">{book.title}</span>
-          <span className="my-5 text-md text-end px-2">{book.author}</span>
-        </div>
-        <div className="flex h-[50%] flex-col justify-between bg-amber-100/50 ">
-          <div className="m-2 border-y h-[60%] border-red-900 px-2 overflow-hidden">
-            <p className="h-full text-ellipsis text-sm">{book.resumo}</p>
-          </div>
-          <div className="flex justify-between">
-            <button
-              className="m-2 self-end red-button"
-            >
-              Emprestar
-            </button>
-            <button
-              key={book.id}
-              className="m-2 self-end red-button"
-              onClick={() => deleteBook.mutate({ id: book.id })}
-            >
-              Apagar
-            </button>
-          </div>
-        </div>
-      </div>
       <div>
-        {deleteBook.isLoading && (
-          <div className="modal-base"></div>
-        )}
+        <div className="mx-2 my-2 flex h-80 w-52 flex-col overflow-hidden rounded-md bg-red-900 text-white">
+          <div className="flex h-[50%] flex-col justify-between">
+            <span className="my-5 text-center text-xl">{book.title}</span>
+            <span className="text-md my-5 px-2 text-end">{book.author}</span>
+          </div>
+          <div className="flex h-[50%] flex-col justify-between bg-amber-100/50 ">
+            <div className="m-2 h-[60%] overflow-hidden border-y border-red-900 px-2">
+              <p className="h-full text-ellipsis text-sm">{book.resumo}</p>
+            </div>
+            <div className="flex justify-between">
+              <button className="red-button m-2 self-end">Emprestar</button>
+              <button
+                key={book.id}
+                className="red-button m-2 self-end"
+                onClick={() => deleteBook.mutate({ id: book.id })}
+              >
+                Apagar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div>{deleteBook.isLoading && <div className="modal-base"></div>}</div>
       </div>
     </>
   );
