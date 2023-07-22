@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <div>
-      <div className="bg-red-900 flex justify-between h-14 px-20">
+      <div className="bg-red-900 flex justify-between h-14 px-20 inset-0 absolute">
         <Logo />
         
         <div className="flex flex-row px-1 h-full">

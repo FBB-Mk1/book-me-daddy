@@ -13,7 +13,7 @@ const BookCard: FC<BookCardProps> = ({ book, setBookList }) => {
       setBookList((prev) => prev.filter((item) => item.id !== data.id));
     },
   });
-
+  
   return (
     <>
       <div>
@@ -27,7 +27,12 @@ const BookCard: FC<BookCardProps> = ({ book, setBookList }) => {
               <p className="h-full text-ellipsis text-sm">{book.resumo}</p>
             </div>
             <div className="flex justify-between">
-              <button className="red-button m-2 self-end">Emprestar</button>
+              <button
+                className="red-button m-2 self-end"
+                onClick={() => alert("not implemented yet")}
+              >
+                Emprestar
+              </button>
               <button
                 key={book.id}
                 className="red-button m-2 self-end"

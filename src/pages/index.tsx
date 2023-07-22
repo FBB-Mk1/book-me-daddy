@@ -25,7 +25,9 @@ export default function Home() {
           <div className="absolute inset-0 flex flex-col  items-center justify-center">
             <div className="flex h-80 w-64 flex-col justify-around rounded-2xl bg-red-900">
               <Logo />
-              <div className="text-white text-center mb-10 text-3xl" >BOOK.me</div>
+              <div className="mb-10 text-center text-3xl text-white">
+                BOOK.me
+              </div>
               <button
                 className="white-button mb-10 self-center rounded-md "
                 onClick={() => void signIn()}

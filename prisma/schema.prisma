@@ -49,7 +49,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  books          Book[]
+  books         Book[]
   friend        User[]    @relation("friends")
   friendOf      User[]    @relation("friends")
 }
@@ -74,8 +74,10 @@ model Book {
 }
 
 model LentBook {
-  id       String  @id @default(cuid())
-  book     Book    @relation(fields: [bookId], references: [id])
-  bookId   String
-  isActive Boolean @default(false)
+  id         String   @id @default(cuid())
+  book       Book     @relation(fields: [bookId], references: [id])
+  bookId     String
+  lentDate   DateTime @default(now())
+  returnDate DateTime?
+  person     String
 }

@@ -28,7 +28,7 @@ export default function Books() {
     <>
       
       <div className="h-full w-full flex-col">
-        <div className="flex h-20 border-red-900 border-b justify-between items-center px-20">
+        <div className="flex h-20 border-red-900 border-b justify-between items-center my-14 px-20">
           <button
             className="red-button"
             onClick={() => setModalToggle(true)}

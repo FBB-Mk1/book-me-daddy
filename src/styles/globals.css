@@ -14,6 +14,6 @@
         @apply px-2 hover:border-white hover:bg-red-900 border rounded-sm  hover:text-white text-red-900 border-red-900 bg-white;
     }
     .modal-base {
-        @apply absolute inset-0 flex items-center justify-center bg-black/75;
+        @apply absolute h-full inset-0 flex items-center justify-center bg-black/75;
     }
 }
