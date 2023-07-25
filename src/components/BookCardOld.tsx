@@ -1,6 +1,6 @@
 import { type Book } from "@prisma/client";
-import { useState, type Dispatch, type FC, type SetStateAction } from "react";
-import BookDetailsModal from "./BookDetailsModal";
+import type { Dispatch, FC, SetStateAction } from "react";
+import { api } from "~/utils/api";
 
 interface BookCardProps {
   book: Book;
@@ -8,8 +8,12 @@ interface BookCardProps {
 }
 
 const BookCard: FC<BookCardProps> = ({ book, setBookList }) => {
-  const [detailsModalToggle, setDetailsModalToggle] = useState(false);
-
+  const deleteBook = api.book.delete.useMutation({
+    onSuccess: (data) => {
+      setBookList((prev) => prev.filter((item) => item.id !== data.id));
+    },
+  });
+  
   return (
     <>
       <div>
@@ -22,25 +26,24 @@ const BookCard: FC<BookCardProps> = ({ book, setBookList }) => {
             <div className="m-2 h-[60%] overflow-hidden border-y border-red-900 px-2">
               <p className="h-full text-ellipsis text-sm">{book.resumo}</p>
             </div>
-            <div className="mb-2 self-center">
+            <div className="flex justify-between">
               <button
-                className="red-button"
-                onClick={() => {
-                  setDetailsModalToggle((prev) => !prev);
-                }}
+                className="red-button m-2 self-end"
+                onClick={() => alert("not implemented yet")}
               >
-                Detalhes
+                Emprestar
+              </button>
+              <button
+                key={book.id}
+                className="red-button m-2 self-end"
+                onClick={() => deleteBook.mutate({ id: book.id })}
+              >
+                Apagar
               </button>
             </div>
           </div>
-          {detailsModalToggle && (
-            <BookDetailsModal
-              book={book}
-              setBookList={setBookList}
-              setDetailsModalToggle={setDetailsModalToggle}
-            />
-          )}
         </div>
+        <div>{deleteBook.isLoading && <div className="modal-base"></div>}</div>
       </div>
     </>
   );

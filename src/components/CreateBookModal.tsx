@@ -21,6 +21,7 @@ const BookModal: FC<BookModalProps> = ({ setModalToggle, setBookList }) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [resumo, setResumo] = useState("");
+  
 
   const create = () => {
     createBook.mutate({
@@ -90,3 +91,12 @@ const BookModal: FC<BookModalProps> = ({ setModalToggle, setBookList }) => {
 };
 
 export default BookModal;
+
+
+export const useFilters = () => {
+  const [search, setSearch] = useState('');
+  
+  return {
+    search, setSearch
+  }
+}

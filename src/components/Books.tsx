@@ -1,9 +1,11 @@
 import { type Book } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
-import BookModal from "~/components/BookModal";
+import CreateBookModal from "~/components/CreateBookModal";
 import { api } from "~/utils/api";
 import BookCard from "./BookCard";
+
+
 
 export default function Books() {
   const [bookList, setBookList] = useState<Book[]>([]);
@@ -54,7 +56,7 @@ export default function Books() {
       </div>
       <div>
         {modalToggle && (
-          <BookModal
+          <CreateBookModal
             setModalToggle={setModalToggle}
             setBookList={setBookList}
           />
